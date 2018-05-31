@@ -66,26 +66,6 @@
     </head>
     <body>
         <div ng-app="myApp" ng-controller="myCtrl">
-            <table class="table borderless" align="center">
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-            </table>
             Your Text: <input type="text" ng-model="firstName"><br>
             Position of Text: <select ng-model="class" ng-options="x for (x, y) in positions"></select><br>
             Change Color of Mug: <select ng-model="imageUrl" ng-options="x for (x, y) in colors"></select>
