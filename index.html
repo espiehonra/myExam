@@ -12,7 +12,12 @@
             .bottom { position: absolute; top: 40%; left: 44%; transform: translate(-50%, -50%); }
             .top { position: absolute; top: 5%; left: 44%; transform: translate(-50%, -50%); }
             .centered { position: absolute; top: 22%; left: 44%; transform: translate(-50%, -50%); }
-    	</style>
+            @media (min-width: 220px) and (max-width: 480px) {
+            	.bottom { font-size: 5.4vw!important;}
+            	.top { font-size: 5.4vw!important; }
+            	.centered {font-size: 5.4vw!important; }  
+            }            
+    </style>
     </head>
     <body>
         <div ng-app="myApp" ng-controller="myCtrl" class="container">
