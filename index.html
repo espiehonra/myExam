@@ -4,75 +4,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <style>
-            .borderless td, .borderless th { border: none;}
-            figure.overlay { position: relative; width: 100%; z-index: 1;  }  
-            figure.overlay img {width: 50%;height: 50%;position: relative;left: 20%; }
-            figure.overlay figcaption {  z-index: 1000; padding: 57% 2% 0 2%; font-weight: 700; color: purple; font-size: 16px;
-                /**responsive size is roughly 3.4%  of the device's viewport width**/    
-                font-size: 3.4vw;  
-            }
-            .bottom { position: absolute; top: 600px; left: 30%; }
-            .top { position: absolute; top: 50px; left: 30%; }
-            .centered { position: absolute; top: 20%; left: 35%; transform: translate(-50%, -50%); }
-                /* media queries ----------- */
-                /* Large screens ----------- */
-            @media only screen and (max-width: 1670px) {
-               .bottom { position: absolute; top: 550px; left: 30%; }
-            }
-
-            @media only screen and (max-width: 1570px) {
-                .bottom { position: absolute; top: 450px; left: 30%; }
-            }
-            
-            @media only screen and (max-width: 1270px) {
-                .bottom { position: absolute;top: 370px;left: 30%; }
-            }
-    
-            @media only screen and (max-width: 1050px) {
-                .bottom { position: absolute; top: 330px; left: 30%; }
-            }
-    
-            @media only screen and (max-width: 930px) {
-                .bottom { position: absolute; top: 300px; left: 30%; }
-            }
-    
-            @media only screen and (max-width: 830px) {
-                .bottom { position: absolute; top: 250px; left: 30%; }
-            }
-    
-            @media only screen and (max-width: 700px) {
-            .bottom { position: absolute; top: 200px; left: 30%; }
-            }
-    
-            @media only screen and (max-width: 570px) {
-                .bottom { position: absolute; top: 180px; left: 30%; }
-            }
-    
-            @media only screen and (max-width: 520px) {
-                .bottom { position: absolute; top: 150px; left: 30%; }
-            }
-    
-            @media only screen and (max-width: 440px) {
-            .bottom { position: absolute; top: 130px; left: 30%; }
-            }
- 
-            @media only screen and (max-width: 340px) {
-                .bottom { position: absolute;top: 150px;left: 15%; }
-                figure.overlay img {width: 80%;height: 80%;position: relative;left: 2%; }
-                .centered { position: absolute;top: 25%; left: 20%; transform: translate(-50%, -50%);}
-                .top { position: absolute; top: 20px; left: 10%; }
-            }
+            .container{ margin-top: 10px;}
+            .inputDiv{position: relative; width: 100%;left:5% }
+            figure.overlay { position: relative; width: 100%; z-index: 1; }  
+            figure.overlay img {width: 70%;height: 50%;position: relative;left: 20%; }
+            figure.overlay figcaption {  z-index: 1000; padding: 57% 2% 0 2%; font-weight: 700; color: purple; font-size: 3.4vw;}
+            .bottom { position: absolute; top: 40%; left: 44%; transform: translate(-50%, -50%); }
+            .top { position: absolute; top: 5%; left: 44%; transform: translate(-50%, -50%); }
+            .centered { position: absolute; top: 22%; left: 44%; transform: translate(-50%, -50%); }
     </style>
     </head>
     <body>
-        <div ng-app="myApp" ng-controller="myCtrl">
-            Your Text: <input type="text" ng-model="firstName"><br>
-            Position of Text: <select ng-model="class" ng-options="x for (x, y) in positions"></select><br>
-            Change Color of Mug: <select ng-model="imageUrl" ng-options="x for (x, y) in colors"></select>
+        <div ng-app="myApp" ng-controller="myCtrl" class="container">
+            <div class="container-fluid inputDiv">
+                <div class="row">
+                    <div class="col-sm-4">Your Text: <input type="text" ng-model="yourText"></div>
+                    <div class="col-sm-4">Position of Text: <select ng-model="class" ng-options="x for (x, y) in positions"></select></div>
+                    <div class="col-sm-4">Color of Mug: <select ng-model="imageUrl" ng-options="x for (x, y) in colors"></select></div>
+                </div>
+            </div>
             <figure class="overlay">      
                 <img src="{{imageUrl}}"  >
                 <figcaption> 
-                    <div ng-class="class">{{firstName}}</div>
+                    <div ng-class="class">{{yourText}}</div>
                 </figcaption> 
             </figure>
         </div>
@@ -80,7 +34,7 @@
         <script>
             var app = angular.module('myApp', []);
             app.controller('myCtrl', function($scope) {
-                $scope.firstName= "Your text here.";
+                $scope.yourText= "Your text here.";
                 $scope.imageUrl= "images/whitemug.png";
                 $scope.class= "centered";
                 $scope.colors = {
